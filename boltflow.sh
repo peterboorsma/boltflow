@@ -29,10 +29,16 @@ WD="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 if [[ $PUBLICFOLDER = "" ]] && [[ -d "$WD/public_html" ]] ; then
     PUBLICFOLDER="public_html"
+elif [[ $PUBLICFOLDER = "" ]] && [[ -d "$WD/private_html" ]] ; then
+    PUBLICFOLDER="private_html"
 elif [[ $PUBLICFOLDER = "" ]] && [[ -d "$WD/html" ]] ; then
     PUBLICFOLDER="html"
 elif [[ $PUBLICFOLDER = "" ]] && [[ -d "$WD/public" ]] ; then
     PUBLICFOLDER="public"
+elif [[ $PUBLICFOLDER = "" ]] && [[ -d "$WD/httpdocs" ]] ; then
+    PUBLICFOLDER="httpdocs"
+elif [[ $PUBLICFOLDER = "" ]] && [[ -d "$WD/DEFAULT" ]] ; then
+    PUBLICFOLDER="DEFAULT"
 elif [[ $PUBLICFOLDER = "" ]] ; then
     echo ""
     echo "ERROR: Could not determine the PUBLICFOLDER. Please edit boltflow.sh, and set PUBLICFOLDER manually."
